@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/auraline-design-system-0640237f-91f1-4249-a92a-bfd789b2b67d/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/auraline-design-system-0640237f-91f1-4249-a92a-bfd789b2b67d/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/auraline-design-system-0640237f-91f1-4249-a92a-bfd789b2b67d/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/auraline-design-system-0640237f-91f1-4249-a92a-bfd789b2b67d/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/auraline-design-system-0640237f-91f1-4249-a92a-bfd789b2b67d/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/auraline-design-system-0640237f-91f1-4249-a92a-bfd789b2b67d/styles.css">
+  <script src="_ds/auraline-design-system-0640237f-91f1-4249-a92a-bfd789b2b67d/_ds_bundle.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg-page); color: var(--text-body); font: var(--type-body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--dore-700); text-decoration: none; }
+    a:hover { color: var(--dore-500); }
+    textarea { font: var(--type-body); color: var(--text-body); }
+    textarea::placeholder, input::placeholder { color: var(--gris-300); }
+    textarea:focus { outline: none; border-color: var(--dore-500) !important; box-shadow: 0 0 0 3px var(--focus-ring); }
+    @keyframes auFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--bg-page);">
+
+  <header style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(243,241,234,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--creme-300);">
+    <x-import component-from-global-scope="AuralineDesignSystem_064023.Logo" variant="full" height="38" hint-size="150px,38px"></x-import>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="tel:+33180000000" style="font:var(--w-bold) var(--fs-sm)/1 var(--font-corps);color:var(--marine-700);letter-spacing:0.02em;">01 80 00 00 00</a>
+      <span style="width:1px;height:20px;background:var(--creme-300);"></span>
+      <a href="mailto:indemnisation@auralineassurances.fr" style="font:var(--w-bold) var(--fs-sm)/1 var(--font-corps);color:var(--dore-700);">indemnisation@auralineassurances.fr</a>
+    </div>
+  </header>
+
+  <section style="position:relative;overflow:hidden;background:var(--grad-marine);padding:64px 32px 88px;">
+    <div style="position:absolute;inset:0;background-image:var(--anneaux-marine);opacity:0.7;pointer-events:none;"></div>
+    <div style="position:relative;max-width:1120px;margin:0 auto;">
+      <x-import component-from-global-scope="AuralineDesignSystem_064023.Surtitre" color="var(--dore-300)" hint-size="220px,16px">Espace sinistres · Auraline</x-import>
+      <h1 style="margin:16px 0 0;font:var(--w-regular) var(--fs-h1)/1.1 var(--font-titre);color:var(--creme-100);letter-spacing:-0.01em;max-width:16ch;">Déclarer un <span style="font-style:italic;color:var(--dore-300);">sinistre</span></h1>
+      <p style="margin:18px 0 0;font:var(--type-lead);color:var(--text-on-marine-muted);max-width:60ch;">Renseignez votre déclaration en quelques minutes. Un conseiller dédié accuse réception et revient vers vous sous 24 h ouvrées pour instruire votre dossier.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;">
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.06);border:1px solid var(--marine-line);font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);color:var(--creme-100);letter-spacing:0.04em;">Accusé de réception sous 24 h ouvrées</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.06);border:1px solid var(--marine-line);font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);color:var(--creme-100);letter-spacing:0.04em;">Habitation · Automobile · Professionnel · Prévoyance</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.06);border:1px solid var(--marine-line);font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);color:var(--creme-100);letter-spacing:0.04em;">Données protégées · Conforme RGPD</span>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1120px;margin:-52px auto 0;padding:0 32px 96px;position:relative;">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 336px;gap:32px;align-items:start;">
+
+      <!-- ========== FORM CARD ========== -->
+      <x-import component-from-global-scope="AuralineDesignSystem_064023.Card" padding="0" hint-size="100%,720px" style="overflow:hidden;">
+        <div style="padding:28px 34px;border-bottom:1px solid var(--creme-300);background:var(--creme-100);">
+          <div style="font:var(--w-regular) var(--fs-h3)/1.2 var(--font-titre);color:var(--marine-700);">Formulaire de déclaration</div>
+          <div style="margin-top:6px;font:var(--type-sm);color:var(--text-muted);">Les champs marqués d'un <span style="color:var(--alerte);">*</span> sont obligatoires.</div>
+
+          <!-- Stepper -->
+          <div style="display:flex;align-items:flex-start;margin-top:26px;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:none;width:78px;cursor:pointer;" onClick="{{ goStep1 }}">
+              <span style="{{ s1circle }}"><sc-if value="{{ s1done }}" hint-placeholder-val="{{ false }}"><span style="width:9px;height:5px;border-left:2px solid var(--dore-300);border-bottom:2px solid var(--dore-300);transform:rotate(-45deg);margin-top:-2px;display:block;"></span></sc-if><sc-if value="{{ s1num }}" hint-placeholder-val="{{ true }}">1</sc-if></span>
+              <span style="{{ s1label }}">Contrat &amp; sinistre</span>
+            </div>
+            <span style="{{ c1 }}"></span>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:none;width:78px;cursor:pointer;" onClick="{{ goStep2 }}">
+              <span style="{{ s2circle }}"><sc-if value="{{ s2done }}" hint-placeholder-val="{{ false }}"><span style="width:9px;height:5px;border-left:2px solid var(--dore-300);border-bottom:2px solid var(--dore-300);transform:rotate(-45deg);margin-top:-2px;display:block;"></span></sc-if><sc-if value="{{ s2num }}" hint-placeholder-val="{{ true }}">2</sc-if></span>
+              <span style="{{ s2label }}">Coordonnées</span>
+            </div>
+            <span style="{{ c2 }}"></span>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:none;width:78px;cursor:pointer;" onClick="{{ goStep3 }}">
+              <span style="{{ s3circle }}"><sc-if value="{{ s3done }}" hint-placeholder-val="{{ false }}"><span style="width:9px;height:5px;border-left:2px solid var(--dore-300);border-bottom:2px solid var(--dore-300);transform:rotate(-45deg);margin-top:-2px;display:block;"></span></sc-if><sc-if value="{{ s3num }}" hint-placeholder-val="{{ true }}">3</sc-if></span>
+              <span style="{{ s3label }}">Description</span>
+            </div>
+            <span style="{{ c3 }}"></span>
+            <div style="display:flex;flex-direction:column;align-items:center;flex:none;width:78px;cursor:pointer;" onClick="{{ goStep4 }}">
+              <span style="{{ s4circle }}">4</span>
+              <span style="{{ s4label }}">Consentement</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:34px;">
+
+          <!-- STEP 1 -->
+          <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+            <div style="animation:auFade 0.34s var(--ease-out);">
+              <div style="font:var(--w-bold) var(--fs-sm)/1 var(--font-corps);letter-spacing:0.04em;color:var(--marine-700);margin-bottom:20px;">1 · Votre contrat et le sinistre</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Select" label="Type de sinistre *" value="{{ f.typeSinistre }}" on-change="{{ h.typeSinistre }}" error="{{ e.typeSinistre }}" hint-size="100%,74px">
+                  <option value="">Sélectionnez…</option>
+                  <option value="Habitation">Habitation</option>
+                  <option value="Automobile">Automobile</option>
+                  <option value="Professionnel / RC Pro">Professionnel / RC Pro</option>
+                  <option value="Prévoyance">Prévoyance</option>
+                </x-import>
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="Numéro de contrat *" placeholder="Ex. HAB-2024-018452" value="{{ f.contrat }}" on-change="{{ h.contrat }}" error="{{ e.contrat }}" hint-size="100%,74px"></x-import>
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="Date du sinistre *" type="date" value="{{ f.dateSinistre }}" on-change="{{ h.dateSinistre }}" error="{{ e.dateSinistre }}" hint-size="100%,74px"></x-import>
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="Date de constatation" type="date" value="{{ f.dateConstat }}" on-change="{{ h.dateConstat }}" hint-size="100%,74px"></x-import>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:10px;margin-top:22px;padding:14px 16px;background:var(--info-tint);border-radius:var(--radius-md);">
+                <span style="font:var(--w-bold) var(--fs-sm)/1.5 var(--font-corps);color:var(--info);">Bon à savoir —</span>
+                <span style="font:var(--type-sm);color:var(--marine-800);">déclarez votre sinistre au plus vite (5 jours ouvrés en général, 2 jours en cas de vol, 10 jours après un arrêté de catastrophe naturelle).</span>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 2 -->
+          <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+            <div style="animation:auFade 0.34s var(--ease-out);">
+              <div style="font:var(--w-bold) var(--fs-sm)/1 var(--font-corps);letter-spacing:0.04em;color:var(--marine-700);margin-bottom:20px;">2 · Vos coordonnées</div>
+              <div style="margin-bottom:22px;">
+                <div style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.06em;text-transform:uppercase;color:var(--gris-500);margin-bottom:8px;">Vous êtes</div>
+                <div style="display:inline-flex;gap:8px;padding:4px;background:var(--creme-200);border-radius:var(--radius-pill);">
+                  <button style="{{ qualPartStyle }}" onClick="{{ setPart }}">Particulier</button>
+                  <button style="{{ qualProStyle }}" onClick="{{ setPro }}">Professionnel</button>
+                </div>
+              </div>
+              <sc-if value="{{ isPro }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-bottom:20px;">
+                  <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="Raison sociale *" placeholder="Nom de l'entreprise" value="{{ f.raisonSociale }}" on-change="{{ h.raisonSociale }}" error="{{ e.raisonSociale }}" hint-size="100%,74px"></x-import>
+                </div>
+              </sc-if>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="{{ nomLabel }}" placeholder="Votre nom" value="{{ f.nom }}" on-change="{{ h.nom }}" error="{{ e.nom }}" hint-size="100%,74px"></x-import>
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="Prénom *" placeholder="Votre prénom" value="{{ f.prenom }}" on-change="{{ h.prenom }}" error="{{ e.prenom }}" hint-size="100%,74px"></x-import>
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="Adresse e-mail *" type="email" placeholder="vous@exemple.fr" value="{{ f.email }}" on-change="{{ h.email }}" error="{{ e.email }}" hint-size="100%,74px"></x-import>
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="Téléphone *" type="tel" placeholder="06 00 00 00 00" value="{{ f.tel }}" on-change="{{ h.tel }}" error="{{ e.tel }}" hint-size="100%,74px"></x-import>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 3 -->
+          <sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ false }}">
+            <div style="animation:auFade 0.34s var(--ease-out);">
+              <div style="font:var(--w-bold) var(--fs-sm)/1 var(--font-corps);letter-spacing:0.04em;color:var(--marine-700);margin-bottom:20px;">3 · Description du sinistre</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="Lieu du sinistre *" placeholder="Adresse ou lieu" value="{{ f.lieu }}" on-change="{{ h.lieu }}" error="{{ e.lieu }}" hint-size="100%,74px"></x-import>
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Input" label="Montant estimé des dommages" placeholder="Ex. 2 500 €" value="{{ f.montant }}" on-change="{{ h.montant }}" hint-size="100%,74px"></x-import>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
+                <label style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.06em;text-transform:uppercase;color:var(--gris-500);">Circonstances détaillées *</label>
+                <textarea value="{{ f.circonstances }}" onChange="{{ textareaChange }}" rows="5" placeholder="Décrivez ce qui s'est passé : nature des dommages, biens touchés, chronologie…" style="width:100%;padding:12px 14px;background:var(--blanc);border:1px solid var(--border-hair);border-radius:var(--radius-md);resize:vertical;line-height:1.6;transition:var(--transition-base);"></textarea>
+                <sc-if value="{{ errCirc }}" hint-placeholder-val="{{ false }}"><span style="font:var(--fs-xs)/1.4 var(--font-corps);color:var(--alerte);">{{ e.circonstances }}</span></sc-if>
+              </div>
+              <div style="margin-bottom:8px;">
+                <div style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.06em;text-transform:uppercase;color:var(--gris-500);margin-bottom:8px;">Un tiers est-il impliqué ?</div>
+                <div style="display:inline-flex;gap:8px;padding:4px;background:var(--creme-200);border-radius:var(--radius-pill);">
+                  <button style="{{ tiersNonStyle }}" onClick="{{ setTiersNon }}">Non</button>
+                  <button style="{{ tiersOuiStyle }}" onClick="{{ setTiersOui }}">Oui</button>
+                </div>
+              </div>
+              <sc-if value="{{ tiersOui }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:6px;margin-top:14px;">
+                  <label style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.06em;text-transform:uppercase;color:var(--gris-500);">Coordonnées du tiers / n° de constat</label>
+                  <textarea value="{{ f.descTiers }}" onChange="{{ descTiersChange }}" rows="3" placeholder="Nom, assureur, immatriculation, numéro de constat amiable…" style="width:100%;padding:12px 14px;background:var(--blanc);border:1px solid var(--border-hair);border-radius:var(--radius-md);resize:vertical;line-height:1.6;transition:var(--transition-base);"></textarea>
+                </div>
+              </sc-if>
+              <div style="display:flex;align-items:center;gap:14px;margin-top:22px;padding:18px 20px;border:1px dashed var(--dore-500);border-radius:var(--radius-md);background:var(--dore-tint);">
+                <div style="flex:none;width:40px;height:40px;border-radius:var(--radius-sm);border:1px solid var(--dore-500);display:grid;place-items:center;color:var(--dore-700);font:var(--w-bold) 20px/1 var(--font-corps);">+</div>
+                <div>
+                  <div style="font:var(--w-bold) var(--fs-sm)/1.3 var(--font-corps);color:var(--marine-700);">Joindre vos pièces justificatives</div>
+                  <div style="font:var(--type-sm);color:var(--text-muted);">Photos, factures, dépôt de plainte, constat… — PDF, JPG ou PNG jusqu'à 10 Mo.</div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 4 -->
+          <sc-if value="{{ isStep4 }}" hint-placeholder-val="{{ false }}">
+            <div style="animation:auFade 0.34s var(--ease-out);">
+              <div style="font:var(--w-bold) var(--fs-sm)/1 var(--font-corps);letter-spacing:0.04em;color:var(--marine-700);margin-bottom:20px;">4 · Récapitulatif &amp; consentement</div>
+              <div style="border:1px solid var(--creme-300);border-radius:var(--radius-md);overflow:hidden;margin-bottom:24px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;">
+                  <div style="padding:14px 18px;border-bottom:1px solid var(--creme-300);border-right:1px solid var(--creme-300);"><div style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.05em;text-transform:uppercase;color:var(--gris-400);">Type de sinistre</div><div style="margin-top:5px;font:var(--w-bold) var(--fs-body)/1.3 var(--font-corps);color:var(--marine-700);">{{ recapType }}</div></div>
+                  <div style="padding:14px 18px;border-bottom:1px solid var(--creme-300);"><div style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.05em;text-transform:uppercase;color:var(--gris-400);">N° de contrat</div><div style="margin-top:5px;font:var(--w-bold) var(--fs-body)/1.3 var(--font-corps);color:var(--marine-700);">{{ recapContrat }}</div></div>
+                  <div style="padding:14px 18px;border-right:1px solid var(--creme-300);"><div style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.05em;text-transform:uppercase;color:var(--gris-400);">Déclarant</div><div style="margin-top:5px;font:var(--w-bold) var(--fs-body)/1.3 var(--font-corps);color:var(--marine-700);">{{ recapName }}</div></div>
+                  <div style="padding:14px 18px;"><div style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.05em;text-transform:uppercase;color:var(--gris-400);">Date du sinistre</div><div style="margin-top:5px;font:var(--w-bold) var(--fs-body)/1.3 var(--font-corps);color:var(--marine-700);">{{ recapDate }}</div></div>
+                </div>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div>
+                  <x-import component-from-global-scope="AuralineDesignSystem_064023.Checkbox" label="J'ai lu et j'accepte que mes données soient traitées par Auraline Assurances Courtage pour l'instruction et la gestion de ma déclaration de sinistre, pour l’instruction de mon dossier, conformément à la réglementation RGPD. *" checked="{{ f.consentRgpd }}" on-change="{{ hc.consentRgpd }}" hint-size="100%,48px"></x-import>
+                  <sc-if value="{{ errConsent }}" hint-placeholder-val="{{ false }}"><span style="display:block;margin-top:6px;margin-left:30px;font:var(--fs-xs)/1.4 var(--font-corps);color:var(--alerte);">{{ e.consentRgpd }}</span></sc-if>
+                </div>
+                <div>
+                  <x-import component-from-global-scope="AuralineDesignSystem_064023.Checkbox" label="Je certifie sur l'honneur l'exactitude des informations déclarées. Toute fausse déclaration peut entraîner la nullité du contrat (art. L.113-8 du Code des assurances). *" checked="{{ f.exactitude }}" on-change="{{ hc.exactitude }}" hint-size="100%,48px"></x-import>
+                  <sc-if value="{{ errExact }}" hint-placeholder-val="{{ false }}"><span style="display:block;margin-top:6px;margin-left:30px;font:var(--fs-xs)/1.4 var(--font-corps);color:var(--alerte);">{{ e.exactitude }}</span></sc-if>
+                </div>
+                <x-import component-from-global-scope="AuralineDesignSystem_064023.Checkbox" label="J'accepte d'être recontacté(e) par un conseiller Auraline au sujet de ce sinistre (facultatif)." checked="{{ f.consentContact }}" on-change="{{ hc.consentContact }}" hint-size="100%,48px"></x-import>
+              </div>
+              <p style="margin:20px 0 0;font:var(--fs-xs)/1.6 var(--font-corps);color:var(--text-muted);">Vous pouvez retirer votre consentement et exercer vos droits (accès, rectification, effacement…) à tout moment auprès de notre Délégué à la protection des données — voir la notice ci-dessous.</p>
+            </div>
+          </sc-if>
+
+          <!-- NAV -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:32px;padding-top:24px;border-top:1px solid var(--creme-300);">
+            <sc-if value="{{ canPrev }}" hint-placeholder-val="{{ false }}">
+              <x-import component-from-global-scope="AuralineDesignSystem_064023.Button" variant="ghost" on-click="{{ goPrev }}" hint-size="auto,44px">← Précédent</x-import>
+            </sc-if>
+            <sc-if value="{{ noPrev }}" hint-placeholder-val="{{ true }}"><span></span></sc-if>
+            <sc-if value="{{ notLast }}" hint-placeholder-val="{{ true }}">
+              <x-import component-from-global-scope="AuralineDesignSystem_064023.Button" variant="primary" on-click="{{ goNext }}" hint-size="auto,44px">Continuer →</x-import>
+            </sc-if>
+            <sc-if value="{{ isLast }}" hint-placeholder-val="{{ false }}">
+              <x-import component-from-global-scope="AuralineDesignSystem_064023.Button" variant="gold" on-click="{{ submit }}" hint-size="auto,44px">Envoyer ma déclaration</x-import>
+            </sc-if>
+          </div>
+        </div>
+      </x-import>
+
+      <!-- ========== SIDEBAR ========== -->
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <x-import component-from-global-scope="AuralineDesignSystem_064023.Card" goldRule="{{ true }}" hint-size="100%,300px">
+          <div style="font:var(--w-regular) var(--fs-h4)/1.2 var(--font-titre);color:var(--marine-700);">Pièces à préparer</div>
+          <p style="margin:8px 0 16px;font:var(--type-sm);color:var(--text-muted);">Selon la nature du sinistre :</p>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <div style="display:flex;gap:10px;font:var(--type-sm);color:var(--text-body);"><span style="color:var(--dore-500);flex:none;">—</span>Numéro et copie du contrat</div>
+            <div style="display:flex;gap:10px;font:var(--type-sm);color:var(--text-body);"><span style="color:var(--dore-500);flex:none;">—</span>Déclaration circonstanciée &amp; photos des dommages</div>
+            <div style="display:flex;gap:10px;font:var(--type-sm);color:var(--text-body);"><span style="color:var(--dore-500);flex:none;">—</span>Factures, devis ou justificatifs de valeur</div>
+            <div style="display:flex;gap:10px;font:var(--type-sm);color:var(--text-body);"><span style="color:var(--dore-500);flex:none;">—</span>Dépôt de plainte (vol, vandalisme)</div>
+            <div style="display:flex;gap:10px;font:var(--type-sm);color:var(--text-body);"><span style="color:var(--dore-500);flex:none;">—</span>Constat amiable (automobile)</div>
+            <div style="display:flex;gap:10px;font:var(--type-sm);color:var(--text-body);"><span style="color:var(--dore-500);flex:none;">—</span>Certificat médical sous pli confidentiel (prévoyance)</div>
+          </div>
+        </x-import>
+
+        <x-import component-from-global-scope="AuralineDesignSystem_064023.Card" variant="marine" hint-size="100%,220px">
+          <div style="font:var(--w-regular) var(--fs-h4)/1.2 var(--font-titre);color:var(--creme-100);">Un conseiller à vos côtés</div>
+          <p style="margin:10px 0 18px;font:var(--type-sm);color:var(--text-on-marine-muted);line-height:1.6;">Une question sur votre déclaration ? Notre service indemnisation vous accompagne.</p>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div><div style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.06em;text-transform:uppercase;color:var(--dore-300);margin-bottom:4px;">Par téléphone</div><a href="tel:+33180000000" style="font:var(--w-bold) var(--fs-body)/1 var(--font-corps);color:var(--creme-100);">01 80 00 00 00</a><div style="font:var(--fs-xs)/1.4 var(--font-corps);color:var(--text-on-marine-muted);margin-top:3px;">Lun.–Ven. · 9 h 30 – 12 h · 13 h 30 – 17 h</div></div>
+            <div><div style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.06em;text-transform:uppercase;color:var(--dore-300);margin-bottom:4px;">Par e-mail</div><a href="mailto:indemnisation@auralineassurances.fr" style="font:var(--w-bold) var(--fs-sm)/1.3 var(--font-corps);color:var(--creme-100);word-break:break-all;">indemnisation@auralineassurances.fr</a></div>
+          </div>
+        </x-import>
+      </div>
+    </div>
+
+    <!-- ========== TRAITEMENT / TIMELINE ========== -->
+    <div style="margin-top:64px;">
+      <div style="text-align:center;margin-bottom:40px;">
+        <x-import component-from-global-scope="AuralineDesignSystem_064023.Surtitre" hint-size="200px,16px">Après votre déclaration</x-import>
+        <h2 style="margin:14px 0 0;font:var(--w-regular) var(--fs-h2)/1.15 var(--font-titre);color:var(--marine-700);">Les étapes du <span style="font-style:italic;color:var(--dore-700);">traitement</span></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;">
+        <x-import component-from-global-scope="AuralineDesignSystem_064023.Card" hint-size="100%,200px">
+          <div style="font:var(--w-regular) 30px/1 var(--font-titre);color:var(--dore-500);">01</div>
+          <div style="margin-top:12px;font:var(--w-bold) var(--fs-body)/1.3 var(--font-corps);color:var(--marine-700);">Réception &amp; accusé</div>
+          <p style="margin:8px 0 14px;font:var(--type-sm);color:var(--text-muted);line-height:1.55;">Nous enregistrons votre déclaration et vous adressons un accusé avec votre numéro de dossier.</p>
+          <span style="display:inline-flex;padding:5px 11px;border-radius:var(--radius-pill);background:var(--dore-tint);font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);color:var(--dore-700);">Sous 24 h ouvrées</span>
+        </x-import>
+        <x-import component-from-global-scope="AuralineDesignSystem_064023.Card" hint-size="100%,200px">
+          <div style="font:var(--w-regular) 30px/1 var(--font-titre);color:var(--dore-500);">02</div>
+          <div style="margin-top:12px;font:var(--w-bold) var(--fs-body)/1.3 var(--font-corps);color:var(--marine-700);">Instruction &amp; expertise</div>
+          <p style="margin:8px 0 14px;font:var(--type-sm);color:var(--text-muted);line-height:1.55;">Un conseiller dédié transmet votre dossier à l'assureur ; un expert peut être mandaté si nécessaire.</p>
+          <span style="display:inline-flex;padding:5px 11px;border-radius:var(--radius-pill);background:var(--info-tint);font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);color:var(--info);">Selon le sinistre</span>
+        </x-import>
+        <x-import component-from-global-scope="AuralineDesignSystem_064023.Card" hint-size="100%,200px">
+          <div style="font:var(--w-regular) 30px/1 var(--font-titre);color:var(--dore-500);">03</div>
+          <div style="margin-top:12px;font:var(--w-bold) var(--fs-body)/1.3 var(--font-corps);color:var(--marine-700);">Proposition d'indemnisation</div>
+          <p style="margin:8px 0 14px;font:var(--type-sm);color:var(--text-muted);line-height:1.55;">Vous recevez le détail de la prise en charge et le montant proposé, que nous vous expliquons.</p>
+          <span style="display:inline-flex;padding:5px 11px;border-radius:var(--radius-pill);background:var(--attention-tint);font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);color:var(--attention);">Après expertise</span>
+        </x-import>
+        <x-import component-from-global-scope="AuralineDesignSystem_064023.Card" hint-size="100%,200px">
+          <div style="font:var(--w-regular) 30px/1 var(--font-titre);color:var(--dore-500);">04</div>
+          <div style="margin-top:12px;font:var(--w-bold) var(--fs-body)/1.3 var(--font-corps);color:var(--marine-700);">Règlement</div>
+          <p style="margin:8px 0 14px;font:var(--type-sm);color:var(--text-muted);line-height:1.55;">Après votre accord, l'indemnité est versée sur votre compte selon les modalités du contrat.</p>
+          <span style="display:inline-flex;padding:5px 11px;border-radius:var(--radius-pill);background:var(--succes-tint);font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);color:var(--succes);">Sous 30 jours</span>
+        </x-import>
+      </div>
+    </div>
+
+  </div>
+
+  <footer style="background:var(--marine-900);padding:40px 32px;">
+    <div style="max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+      <x-import component-from-global-scope="AuralineDesignSystem_064023.Logo" variant="light" height="32" hint-size="130px,32px"></x-import>
+      <p style="margin:0;font:var(--fs-xs)/1.6 var(--font-corps);color:var(--text-on-marine-muted);max-width:60ch;">Auraline Assurances · Courtage — La confiance au cœur de vos protections. Société de courtage en assurances immatriculée à l'ORIAS. Les garanties s'appliquent dans les conditions et limites du contrat souscrit.</p>
+    </div>
+  </footer>
+
+  <!-- ========== SUCCESS OVERLAY ========== -->
+  <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:60;background:var(--scrim-marine),var(--marine-900);display:grid;place-items:center;padding:32px;animation:auFade 0.3s var(--ease-out);">
+      <x-import component-from-global-scope="AuralineDesignSystem_064023.Card" goldRule="{{ true }}" padding="44px" hint-size="520px,440px" style="max-width:520px;text-align:center;">
+        <div style="width:64px;height:64px;margin:0 auto 22px;border-radius:50%;background:var(--succes-tint);display:grid;place-items:center;">
+          <span style="width:22px;height:12px;border-left:3px solid var(--succes);border-bottom:3px solid var(--succes);transform:rotate(-45deg);margin-top:-4px;display:block;"></span>
+        </div>
+        <h2 style="margin:0;font:var(--w-regular) var(--fs-h3)/1.2 var(--font-titre);color:var(--marine-700);">Votre déclaration est enregistrée</h2>
+        <p style="margin:12px 0 20px;font:var(--type-body);color:var(--text-muted);line-height:1.6;">Vous recevez un e-mail de confirmation sous quelques minutes. Un conseiller Auraline revient vers vous sous 24 h ouvrées.</p>
+        <div style="background:var(--creme-100);border:1px solid var(--creme-300);border-radius:var(--radius-md);padding:16px;margin-bottom:24px;">
+          <div style="font:var(--w-bold) var(--fs-xs)/1 var(--font-corps);letter-spacing:0.06em;text-transform:uppercase;color:var(--gris-400);">Numéro de dossier</div>
+          <div style="margin-top:6px;font:var(--w-regular) var(--fs-h4)/1 var(--font-titre);color:var(--dore-700);letter-spacing:0.04em;">{{ ref }}</div>
+        </div>
+        <x-import component-from-global-scope="AuralineDesignSystem_064023.Button" variant="primary" full="{{ true }}" on-click="{{ reset }}" hint-size="100%,44px">Faire une nouvelle déclaration</x-import>
+      </x-import>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = {
+    step: 1,
+    submitted: false,
+    ref: '',
+    f: {
+      qualite: 'Particulier',
+      typeSinistre: '', contrat: '', dateSinistre: '', dateConstat: '',
+      nom: '', prenom: '', raisonSociale: '', email: '', tel: '',
+      lieu: '', montant: '', circonstances: '', tiers: 'Non', descTiers: '',
+      consentRgpd: false, exactitude: false, consentContact: false,
+    },
+    e: {},
+  };
+
+  setField(name, val) {
+    this.setState(s => ({ f: { ...s.f, [name]: val }, e: { ...s.e, [name]: undefined } }));
+  }
+
+  validate(step) {
+    const f = this.state.f;
+    const e = {};
+    const req = (k, msg) => { if (!String(f[k] || '').trim()) e[k] = msg || 'Ce champ est requis.'; };
+    if (step === 1) {
+      req('typeSinistre', 'Sélectionnez le type de sinistre.');
+      req('contrat', 'Indiquez votre numéro de contrat.');
+      req('dateSinistre', 'Indiquez la date du sinistre.');
+    }
+    if (step === 2) {
+      if (f.qualite === 'Professionnel') req('raisonSociale', 'Indiquez la raison sociale.');
+      else { req('nom', 'Indiquez votre nom.'); req('prenom', 'Indiquez votre prénom.'); }
+      req('email', 'Indiquez votre e-mail.');
+      if (f.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = 'Adresse e-mail invalide.';
+      req('tel', 'Indiquez votre téléphone.');
+    }
+    if (step === 3) {
+      req('lieu', 'Précisez le lieu du sinistre.');
+      req('circonstances', 'Décrivez les circonstances du sinistre.');
+    }
+    if (step === 4) {
+      if (!f.consentRgpd) e.consentRgpd = 'Requis pour traiter votre déclaration.';
+      if (!f.exactitude) e.exactitude = 'Vous devez certifier l\u2019exactitude des informations.';
+    }
+    return e;
+  }
+
+  goNext() {
+    const e = this.validate(this.state.step);
+    if (Object.keys(e).length) { this.setState({ e }); return; }
+    this.setState(s => ({ step: Math.min(4, s.step + 1), e: {} }));
+  }
+
+  goPrev() { this.setState(s => ({ step: Math.max(1, s.step - 1), e: {} })); }
+
+  goStep(n) {
+    if (n < this.state.step) this.setState({ step: n, e: {} });
+    else if (n > this.state.step) this.goNext();
+  }
+
+  submit() {
+    const e = this.validate(4);
+    if (Object.keys(e).length) { this.setState({ e }); return; }
+    const ref = 'SIN-' + new Date().getFullYear() + '-' + Math.floor(100000 + Math.random() * 899999);
+    this.setState({ submitted: true, ref });
+  }
+
+  reset() {
+    this.setState({
+      step: 1, submitted: false, ref: '', e: {},
+      f: {
+        qualite: 'Particulier',
+        typeSinistre: '', contrat: '', dateSinistre: '', dateConstat: '',
+        nom: '', prenom: '', raisonSociale: '', email: '', tel: '',
+        lieu: '', montant: '', circonstances: '', tiers: 'Non', descTiers: '',
+        consentRgpd: false, exactitude: false, consentContact: false,
+      },
+    });
+  }
+
+  renderVals() {
+    const { step, f, e, submitted, ref } = this.state;
+
+    const textFields = ['typeSinistre', 'contrat', 'dateSinistre', 'dateConstat', 'nom', 'prenom', 'raisonSociale', 'email', 'tel', 'lieu', 'montant'];
+    const h = {};
+    textFields.forEach(n => { h[n] = (ev) => this.setField(n, ev.target.value); });
+    const hc = {};
+    ['consentRgpd', 'exactitude', 'consentContact'].forEach(n => { hc[n] = (ev) => this.setField(n, ev.target.checked); });
+
+    const isDone = (n) => step > n;
+    const isCur = (n) => step === n;
+    const circle = (n) => {
+      const done = isDone(n), cur = isCur(n);
+      return {
+        width: '34px', height: '34px', borderRadius: '50%',
+        display: 'grid', placeItems: 'center',
+        font: '700 14px/1 var(--font-corps)',
+        background: (done || cur) ? 'var(--marine-700)' : 'var(--blanc)',
+        color: (done || cur) ? 'var(--creme-100)' : 'var(--gris-400)',
+        border: (done || cur) ? '1px solid var(--marine-700)' : '1px solid var(--border-hair)',
+        boxShadow: cur ? '0 0 0 4px rgba(27,42,77,0.10)' : 'none',
+        transition: 'var(--transition-base)',
+      };
+    };
+    const label = (n) => ({
+      marginTop: '8px', textAlign: 'center',
+      font: (isCur(n) ? '700' : '400') + ' 11px/1.3 var(--font-corps)',
+      letterSpacing: '0.02em',
+      color: (isDone(n) || isCur(n)) ? 'var(--marine-700)' : 'var(--gris-400)',
+    });
+    const connector = (n) => ({
+      flex: 1, height: '2px', marginTop: '16px',
+      background: step > n ? 'var(--dore-500)' : 'var(--creme-300)',
+      transition: 'var(--transition-base)',
+    });
+
+    const toggle = (active) => ({
+      padding: '9px 20px', borderRadius: 'var(--radius-pill)', border: 'none',
+      cursor: 'pointer', font: '700 13px/1 var(--font-corps)', letterSpacing: '0.02em',
+      background: active ? 'var(--marine-700)' : 'transparent',
+      color: active ? 'var(--creme-100)' : 'var(--gris-500)',
+      transition: 'var(--transition-base)',
+    });
+
+    const isPart = f.qualite === 'Particulier';
+    const isPro = f.qualite === 'Professionnel';
+    const tiersOui = f.tiers === 'Oui';
+
+    return {
+      f, e, submitted, ref,
+      h, hc,
+      textareaChange: (ev) => this.setField('circonstances', ev.target.value),
+      descTiersChange: (ev) => this.setField('descTiers', ev.target.value),
+
+      isStep1: step === 1, isStep2: step === 2, isStep3: step === 3, isStep4: step === 4,
+      isPart, isPro, tiersOui,
+      nomLabel: isPro ? 'Nom du représentant *' : 'Nom *',
+
+      setPart: () => this.setField('qualite', 'Particulier'),
+      setPro: () => this.setField('qualite', 'Professionnel'),
+      setTiersOui: () => this.setField('tiers', 'Oui'),
+      setTiersNon: () => this.setField('tiers', 'Non'),
+
+      goNext: () => this.goNext(),
+      goPrev: () => this.goPrev(),
+      submit: () => this.submit(),
+      reset: () => this.reset(),
+      goStep1: () => this.goStep(1), goStep2: () => this.goStep(2), goStep3: () => this.goStep(3), goStep4: () => this.goStep(4),
+
+      canPrev: step > 1, noPrev: step === 1,
+      notLast: step < 4, isLast: step === 4,
+
+      s1done: isDone(1), s2done: isDone(2), s3done: isDone(3),
+      s1num: !isDone(1), s2num: !isDone(2), s3num: !isDone(3),
+      s1circle: circle(1), s2circle: circle(2), s3circle: circle(3), s4circle: circle(4),
+      s1label: label(1), s2label: label(2), s3label: label(3), s4label: label(4),
+      c1: connector(1), c2: connector(2), c3: connector(3),
+
+      qualPartStyle: toggle(isPart), qualProStyle: toggle(isPro),
+      tiersNonStyle: toggle(!tiersOui), tiersOuiStyle: toggle(tiersOui),
+
+      errCirc: !!e.circonstances, errConsent: !!e.consentRgpd, errExact: !!e.exactitude,
+
+      recapType: f.typeSinistre || '—',
+      recapContrat: f.contrat || '—',
+      recapDate: f.dateSinistre || '—',
+      recapName: isPro ? (f.raisonSociale || '—') : ((f.prenom + ' ' + f.nom).trim() || '—'),
+    };
+  }
+}
+</script>
+</body>
+</html>
